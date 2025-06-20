@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>✅ Checkout Successful</h2>
+<p>Thank you for your order!</p>
+<h4>Total Paid: ₹{{ total }}</h4>
+<a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Continue Shopping</a>
+{% endblock %}

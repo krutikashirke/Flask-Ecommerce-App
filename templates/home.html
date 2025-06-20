@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Browse Products</h2>
+
+<!-- 🔍 Filter Form -->
+<form method="get" class="row g-3 align-items-end mb-4">
+    <!-- Category Filter -->
+    <div class="col-md-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" name="category" id="category">
+            <option value="">All</option>
+            {% for cat in categories %}
+                <option value="{{ cat }}" {% if request.args.get('category') == cat %}selected{% endif %}>{{ cat }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Min Price -->
+    <div class="col-md-2">
+        <label for="min_price" class="form-label">Min Price</label>
+        <input type="number" class="form-control" name="min_price" id="min_price" value="{{ request.args.get('min_price', '') }}">
+    </div>
+
+    <!-- Max Price -->
+    <div class="col-md-2">
+        <label for="max_price" class="form-label">Max Price</label>
+        <input type="number" class="form-control" name="max_price" id="max_price" value="{{ request.args.get('max_price', '') }}">
+    </div>
+
+    <!-- Sort -->
+    <div class="col-md-2">
+        <label for="sort" class="form-label">Sort By</label>
+        <select class="form-select" name="sort" id="sort">
+            <option value="">Default</option>
+            <option value="low" {% if request.args.get('sort') == 'low' %}selected{% endif %}>Price: Low to High</option>
+            <option value="high" {% if request.args.get('sort') == 'high' %}selected{% endif %}>Price: High to Low</option>
+        </select>
+    </div>
+
+    <!-- Submit -->
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary w-100">Apply</button>
+    </div>
+</form>
+
+<!-- 🛍️ Product List -->
+<div class="d-flex flex-wrap gap-4">
+    {% for product in products %}
+    <div class="card text-center p-2 shadow" style="width: 16rem;">
+        <img src="{{ product.image_url }}" alt="{{ product.name }}"
+             style="width: 100px; height: 100px; object-fit: contain; margin: auto; padding-top: 10px;">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p><strong>₹{{ product.price }}</strong></p>
+            <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="btn btn-sm btn-success">Add to Cart</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not products %}
+<p class="mt-4 text-muted">No products found for the selected filters.</p>
+{% endif %}
+{% endblock %}
