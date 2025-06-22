@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📦 Your Orders</h2>
+
+{% if orders %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>₹{{ order.total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No past orders found.</p>
+{% endif %}
+
+{% endblock %}

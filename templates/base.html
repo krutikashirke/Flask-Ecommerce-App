@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Commerce App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+    <a class="navbar-brand" href="{{ url_for('home') }}">🛒 MyShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <form class="d-flex ms-auto me-3" method="GET" action="{{ url_for('home') }}">
+            <input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Search Products">
+            <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
+        </form>
+
+        <div class="d-flex">
+            {% if current_user.is_authenticated %}
+                {% if current_user.username == 'admin' %}
+                    <a class="btn btn-warning btn-sm me-2" href="{{ url_for('admin_dashboard') }}">Admin Panel</a>
+                {% endif %}
+                <span class="navbar-text text-white me-2">Hi, {{ current_user.username }}</span>
+                <a class="btn btn-outline-light btn-sm me-2" href="{{ url_for('logout') }}">Logout</a>
+                <a class="btn btn-light btn-sm" href="{{ url_for('view_cart') }}">Cart 🛒</a>
+            {% else %}
+                <a class="btn btn-outline-light btn-sm me-2" href="{{ url_for('login') }}">Login</a>
+                <a class="btn btn-outline-light btn-sm" href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="alert alert-info">{{ msg }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+<footer class="bg-dark text-center text-white py-3 mt-5">
+    <small>&copy; 2025 MyShop | Built with Flask ❤️</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
