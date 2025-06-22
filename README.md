@@ -3,7 +3,7 @@
 A simple, responsive and fully functional e-commerce web application built using **Flask**, **SQLite**, and **Bootstrap**.  
 This app lets users browse products, filter by category and price, add items to cart, and complete purchases.
 
-> ✨ **Live Demo:** [Demo Video](./1000321996%20(1).mp4)  
+> 🔗  download/play directly: [Download Demo Video](static/images/demo.mp4)
 > 📁 Repository: [Flask-Ecommerce-App](https://github.com/krutikashirke/Flask-Ecommerce-App)
 
 ---
