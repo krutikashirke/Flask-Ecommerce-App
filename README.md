@@ -3,7 +3,7 @@
 A simple, responsive and fully functional e-commerce web application built using **Flask**, **SQLite**, and **Bootstrap**.  
 This app lets users browse products, filter by category and price, add items to cart, and complete purchases.
 
-> 🔗  download/play directly: [Download Demo Video](static/images/demo.mp4)
+> 🔗  demo_video : https://www.linkedin.com/posts/krutika-shirke-880125359_flask-python-webdevelopment-activity-7344611350880423938-pniM?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFkvZKABu5rV-NuKj6yXVmHFXA5BC8V0ZQM
 > 📁 Repository: [Flask-Ecommerce-App](https://github.com/krutikashirke/Flask-Ecommerce-App)
 
 ---
