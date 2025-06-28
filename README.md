@@ -29,12 +29,6 @@ This app lets users browse products, filter by category and price, add items to 
 
 ---
 
-## 📷 Screenshot
-
-![Homepage](https://via.placeholder.com/900x400?text=Screenshot+Coming+Soon)
-
----
-
 ## 🔧 Setup Instructions
 
 ### 1. Clone the Repository
